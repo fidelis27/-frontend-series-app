@@ -39,7 +39,7 @@ class NewGenre extends Component{
       }
       getUpdatedList(genre, add = true) {
         console.log('lista antes', this.state.genres)
-        const listGenre = this.state.genres.filter(u => u.id !== genre.id)
+        const listGenre = this.state.genres.filter(u => u._id !== genre._id)
         if(add) listGenre.unshift(genre)
           return listGenre
       }
