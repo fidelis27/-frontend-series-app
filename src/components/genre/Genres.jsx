@@ -49,8 +49,8 @@ class Genres extends Component {
       return listGenre
   }
   deleteGenres(id) {
-    console.log("id da serie", id)
-    apis.deleteGenres(id)
+    console.log("id da serie", _id)
+    apis.deleteGenres(_id)
       .then((res) => console.log("serie excluida com sucesso!!!"))
 
   }
