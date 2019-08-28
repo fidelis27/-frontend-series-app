@@ -79,7 +79,7 @@ class NewGenre extends Component{
       }
       renderRows() {
         return (this.state.genres.map(genres=>{
-          return(<tr key={genres._id}>
+          return(<tr key={genres.id}>
             
             <td><Link to={`series/${genres.name}`}>{genres.name}</Link></td>            
             <td>
@@ -88,7 +88,7 @@ class NewGenre extends Component{
                     <i className="fa fa-pencil"></i>
                 </button>
                 <button className="btn btn-danger ml-2"
-                    onClick={() => this.remove(genres._id)}>
+                    onClick={() => this.remove(genres.id)}>
                     <i className="fa fa-trash"></i>
                 </button>
             </td>
