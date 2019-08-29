@@ -44,8 +44,8 @@ class NewGenre extends Component{
           return listGenre
       }
       remove(id) {
-        console.log("id", _id)
-        apis.deleteGenre(_id).then(res => {
+        console.log("id", id)
+        apis.deleteGenre(id).then(res => {
             const genres = this.getUpdatedList(res.data, false)
             console.log('lista depois', this.state.genres)
             this.setState({ genres })
