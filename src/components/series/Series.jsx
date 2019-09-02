@@ -55,7 +55,7 @@ class Series extends Component {
         return(<div className="col-xs-12 col-md-6  mt-5" key={series._id}>
             <div className="item  col-xs-2 col-md-6 ">
               <div className="thumbnail">
-                <img className="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="" />
+                <img className="group list-group-image" src="https://placehold.it/400x250/000/fff" alt="" />
                 <div className="caption">
                   <h4 className="group inner list-group-item-heading justify-content-center  ">
                      {series.name}</h4>
