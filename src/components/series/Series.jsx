@@ -69,7 +69,7 @@ class Series extends Component {
                     <div className="row"> 
                     <div className="col-2 d-flex justify-content">
                       <Link  className="btn btn-success" to={'/series/edit/'+series.id}>Editar</Link>
-                      <a className="btn btn-danger ml-3" onClick={()=>this.deleteSeries(series._id)} href="">Excluir</a>
+                      <div className="btn btn-danger ml-3" onClick={()=> this.deleteSeries(series._id)}>Excluir</div>
                     </div>
                     </div>
                     <hr/>

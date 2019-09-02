@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import apis from '../../db'
-import { Link } from 'react-router-dom'
+
 import Main from '../template/Main'
 
 

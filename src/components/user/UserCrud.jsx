@@ -8,7 +8,7 @@ const headerProps = {
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir!'
 }
 
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'http://localhost:3333/user'
 const initialState = {
     user: { name: '', email: '' },
     list: []
@@ -17,12 +17,20 @@ const initialState = {
 export default class UserCrud extends Component {
 
     state = { ...initialState }
-
-    componentWillMount() {
+    constructor(){
+        super()
         axios(baseUrl).then(resp => {
             this.setState({ list: resp.data })
         })
+    
+
     }
+
+    /* componentDidMount() {
+        axios(baseUrl).then(resp => {
+            this.setState({ list: resp.data })
+        })
+    } */
 
     clear() {
         this.setState({ user: initialState.user })
@@ -30,18 +38,20 @@ export default class UserCrud extends Component {
 
     save() {
         const user = this.state.user
+        console.log(user)
         const method = user.id ? 'put' : 'post'
         const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
         axios[method](url, user)
             .then(resp => {
+                console.log("teste 2", user.name)
                 const list = this.getUpdatedList(resp.data)
                 this.setState({ user: initialState.user, list })
             })
     }
 
     getUpdatedList(user, add = true) {
-        const list = this.state.list.filter(u => u.id !== user.id)
-        if(add) list.unshift(user)
+        const list = this.state.list.filter(u => u._id !== user._id)
+        if (add) list.unshift(user)
         return list
     }
 
@@ -62,8 +72,8 @@ export default class UserCrud extends Component {
                                 name="name"
                                 value={this.state.user.name}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o nome..." required/>
-                                <div class="help-block with-errors"></div>
+                                placeholder="Digite o nome..." required />
+                            <div className="help-block with-errors"></div>
                         </div>
                     </div>
 
@@ -75,7 +85,7 @@ export default class UserCrud extends Component {
                                 value={this.state.user.email}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o e-mail..." required />
-                            <div class="help-block with-errors"></div>
+                            <div className="help-block with-errors"></div>
                         </div>
                     </div>
                 </div>
@@ -103,9 +113,10 @@ export default class UserCrud extends Component {
     }
 
     remove(user) {
-        axios.delete(`${baseUrl}/${user.id}`).then(resp => {
+        axios.delete(`${baseUrl}/${user._id}`).then(resp => {
             const list = this.getUpdatedList(user, false)
             this.setState({ list })
+            console.log(resp.data)
         })
     }
 
@@ -126,11 +137,11 @@ export default class UserCrud extends Component {
             </table>
         )
     }
-
+    
     renderRows() {
-        return this.state.list.map(user => {
+        return this.state.list.map((user,index) => {
             return (
-                <tr key={user.id}>
+                <tr key={index}>
                     <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
@@ -148,7 +159,7 @@ export default class UserCrud extends Component {
             )
         })
     }
-    
+
     render() {
         return (
             <Main {...headerProps}>
