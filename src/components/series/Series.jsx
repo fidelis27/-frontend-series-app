@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import apis from '../../db'
 import {Link} from 'react-router-dom'
 import Main from '../template/Main'
+import { Redirect } from 'react-router-dom'
 
 const statuses= {
     'watched': 'Assistido',
@@ -20,7 +21,8 @@ class Series extends Component {
 
         this.state = {
             isLoading:false,
-            series:[]
+            series:[],
+            redirect:false
         }
         this.renderSeries = this.renderSeries.bind(this)
         this.deleteSeries= this.deleteSeries.bind(this)
@@ -29,30 +31,35 @@ class Series extends Component {
     
     componentDidMount(){
         this.setState({isLoading:true})
-        
-        
-       apis.loadSeriesByGenre(this.props.match.params.genre)
+        this.loadGenres()
+       
+    }
+    loadGenres(){
+        apis.loadSeriesByGenre(this.props.match.params.genre)
        .then((res)=>{
         
            this.setState({
                isLoading:false,
                series:res.data
            })
-            
-
-           
-          
        })
+
     }
-    deleteSeries(id){
-        console.log("id da serie",id)
-        apis.deleteSeries(id)
-        .then((res)=>console.log("serie excluida com sucesso!!!"))
+    deleteSeries(serie){
+        console.log("id da serie",serie._id)
+        apis.deleteSeries(serie._id)
+        .then((res)=>{
+        this.loadGenres()
+        this.setState({redirect: '/series/'+serie.genre })
+        console.log("serie excluida com sucesso!!!")}
+        )
+        
 
     }
     
     renderSeries(series){
         return(<div className="col-xs-12 col-md-6  mt-5" key={series._id}>
+            {this.state.redirect && <Redirect to={this.state.redirect}/>}
             <div className="item  col-xs-2 col-md-6 ">
               <div className="thumbnail">
                 <img className="group list-group-image" src="https://placehold.it/400x250/000/fff" alt="" />
@@ -69,7 +76,7 @@ class Series extends Component {
                     <div className="row"> 
                     <div className="col-2 d-flex justify-content">
                       <Link  className="btn btn-success" to={'/series/edit/'+series.id}>Editar</Link>
-                      <div className="btn btn-danger ml-3" onClick={()=> this.deleteSeries(series._id)}>Excluir</div>
+                      <a  className="btn btn-danger ml-3" onClick={()=> this.deleteSeries(series)}>Excluir</a>
                     </div>
                     </div>
                     <hr/>
