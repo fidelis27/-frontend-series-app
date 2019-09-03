@@ -19,7 +19,7 @@ export default class UserCrud extends Component {
     state = { ...initialState }
     constructor(){
         super()
-        axios(baseUrl).then(resp => {
+        axios.get(baseUrl).then(resp => {
             this.setState({ list: resp.data })
         })
     
