@@ -8,18 +8,24 @@ const headerProps = {
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir!'
 }
 
-const baseUrl = process.env.REACT_APP_API_URL+'user'
+const baseUrl = process.env.REACT_APP_API_URL+'/user'
 const initialState = {
     user: { name: '', email: '' },
     list: []
 }
 
+const api = axios.create({
+    baseURL:/*  'http://localhost:3333' */  process.env.REACT_APP_API_URL 
+})
+
+
+ api.get('genre')
 export default class UserCrud extends Component {
 
     state = { ...initialState }
     constructor(){
         super()
-        axios.get(baseUrl).then(resp => {
+        api.get('user').then(resp => {
             this.setState({ list: resp.data })
         })
     
