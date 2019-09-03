@@ -8,10 +8,11 @@ const apis ={
     loadGenres:()=> api.get('genre'),
     StoreGenre:(genre)=> api.post('genre',genre),
     deleteGenre: (genreId) => api.delete('genre/'+genreId),
+    UpdateGenres:(genre)=>api.put('genre/'+genre._id,genre),
     
     
     StoreSeries:(serie)=> api.post('serie',serie),
-    UpdateSeries:(serie)=>api.put('serie/'+serie.id,serie),
+    UpdateSeries:(serie)=>api.put('serie/'+serie._id,serie),
     loadSeriesByGenre:(genre)=> api.get('serie/'+genre),
     loadSeries:()=> api.get('serie'),   
     deleteSeries: (serieId) => api.delete('serie/'+serieId),

@@ -50,6 +50,7 @@ class NewSeries extends Component {
       })
     
   }
+   
   saveSeries() {
     const newSeries = {
       name: this.refs.name.value,
@@ -60,9 +61,7 @@ class NewSeries extends Component {
 
      
       if ('' === this.refs.name.value) {
-        alert("serie já cadastrada!!!")
-        this.refs.vazio.value = "serie já cadastrada!!!"
-
+        
       } else {
         
         apis.StoreSeries(newSeries)
@@ -81,18 +80,21 @@ class NewSeries extends Component {
       {this.state.redirect &&
         <Redirect to={this.state.redirect} />
       }
+
+      
       <h1>Nova série</h1>
 
-      <form key="form" data-toggle="validator"  >
+      <form key="form" >
         <div className="row">
           <div className="col-12 col-md-12">
             <div className="form-group">
               <label>Nome</label>
-              <input type="text" ref="name" className="form-control" required />
+              <input className="form-control" type="text" ref="name"  required />
               
             </div>
           </div>
         </div>
+        
         <div className="row">
           <div className="col-12 col-md-6">
             <div className="form-group">
