@@ -8,7 +8,7 @@ const headerProps = {
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir!'
 }
 
-const baseUrl = 'http://localhost:3333/user'
+const baseUrl = process.env.REACT_APP_API_URL+'/user'
 const initialState = {
     user: { name: '', email: '' },
     list: []
