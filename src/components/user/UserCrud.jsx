@@ -76,7 +76,7 @@ export default class UserCrud extends Component {
         return (
             <div className="form" data-toggle="validator" role="form">
                 <div className="row">
-                    <div className="col-12 col-md-6">
+                    <div className="col-xs-12 col-md-6">
                         <div className="form-group">
                             <label>Nome</label>
                             <input type="text" className="form-control"
