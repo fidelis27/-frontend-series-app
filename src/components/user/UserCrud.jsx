@@ -88,7 +88,7 @@ export default class UserCrud extends Component {
                         </div>
                     </div>
 
-                    <div className="col-12 col-md-6">
+                    <div className="col-xs-12 col-md-6">
                         <div className="form-group">
                             <label>E-mail</label>
                             <input type="text" className="form-control"
@@ -103,7 +103,7 @@ export default class UserCrud extends Component {
 
                 <hr />
                 <div className="row">
-                    <div className="col-12 d-flex justify-content-end">
+                    <div className="col-xs-12 d-flex justify-content-end">
                         <button className="btn btn-primary"
                             onClick={e => this.save(e)}>
                             Salvar
