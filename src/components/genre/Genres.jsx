@@ -60,7 +60,7 @@ class Genres extends Component {
           return(<tr key={genres.id}>
             
             <td>{genres.name}</td>            
-            <td className="col-12 col-md-6" >
+            <td>
                 <button className="btn btn-warning"
                     onClick={() => this.load(genres)}>
                     <i className="fa fa-pencil"></i>
@@ -82,7 +82,7 @@ class Genres extends Component {
 
     return (
 
-      <table className="table mt-4">
+      <table className="col-12 col-md-6  table mt-4">
         <thead>
           <tr>
 
