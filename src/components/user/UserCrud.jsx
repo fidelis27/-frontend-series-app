@@ -74,9 +74,9 @@ export default class UserCrud extends Component {
 
     renderForm() {
         return (
-            <div className="form" data-toggle="validator" role="form">
+            
                 <div className="row">
-                    <div className="col-xs-12 col-md-6">
+                    
                         <div className="form-group">
                             <label>Nome</label>
                             <input type="text" className="form-control"
@@ -84,11 +84,11 @@ export default class UserCrud extends Component {
                                 value={this.state.user.name}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o nome..." required />
-                            <div className="help-block with-errors"></div>
+                           
                         </div>
-                    </div>
+                    
 
-                    <div className="col-xs-12 col-md-6">
+                    
                         <div className="form-group">
                             <label>E-mail</label>
                             <input type="text" className="form-control"
@@ -96,9 +96,9 @@ export default class UserCrud extends Component {
                                 value={this.state.user.email}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o e-mail..." required />
-                            <div className="help-block with-errors"></div>
+                            
                         </div>
-                    </div>
+                    
                 </div>
 
                 <hr />
@@ -115,7 +115,7 @@ export default class UserCrud extends Component {
                         </button>
                     </div>
                 </div>
-            </div>
+            
         )
     }
 
