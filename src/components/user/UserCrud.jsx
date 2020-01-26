@@ -74,7 +74,7 @@ export default class UserCrud extends Component {
 
     renderForm() {
         return (
-            
+            <div>
                 <div className="row">
                     
                         <div className="form-group">
@@ -115,7 +115,7 @@ export default class UserCrud extends Component {
                         </button>
                     </div>
                 </div>
-            
+           </div> 
         )
     }
 
