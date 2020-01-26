@@ -101,7 +101,7 @@ export default class UserCrud extends Component {
                     
                 </div>
 
-                <hr />
+                <hr/>
                 <div className="row">
                     <div className="col-xs-12 d-flex justify-content-end">
                         <button className="btn btn-primary"
