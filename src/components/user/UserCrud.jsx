@@ -137,7 +137,7 @@ export default class UserCrud extends Component {
             <table className="table mt-4">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        
                         <th>Nome</th>
                         <th>E-mail</th>
                         <th>Ações</th>
@@ -154,7 +154,7 @@ export default class UserCrud extends Component {
         return this.state.list.map((user, index) => {
             return (
                 <tr key={index}>
-                    <td>{user.id}</td>
+                    
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
