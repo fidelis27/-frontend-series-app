@@ -8,27 +8,27 @@ const headerProps = {
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir!'
 }
 
-const baseUrl = process.env.REACT_APP_API_URL+'/user'
+const baseUrl = process.env.REACT_APP_API_URL + '/user'
 const initialState = {
     user: { name: '', email: '' },
     list: []
 }
 
 const api = axios.create({
-    baseURL:/*  'http://localhost:3333' */  process.env.REACT_APP_API_URL 
+    baseURL:/*  'http://localhost:3333' */  process.env.REACT_APP_API_URL
 })
 
 
- api.get('genre')
+api.get('genre')
 export default class UserCrud extends Component {
 
     state = { ...initialState }
-    constructor(){
+    constructor() {
         super()
         api.get('user').then(resp => {
             this.setState({ list: resp.data })
         })
-    
+
 
     }
 
@@ -50,13 +50,13 @@ export default class UserCrud extends Component {
         axios[method](url, user)
             .then(resp => {
                 console.log("teste id", user._id)
-                if(!user._id){
+                if (!user._id) {
                     const list = this.getUpdatedList(resp.data)
                     this.setState({ user: initialState.user, list })
-                }else{
-                    axios.get(baseUrl).then(res => this.setState({list: res.data}))
+                } else {
+                    axios.get(baseUrl).then(res => this.setState({ list: res.data }))
                 }
-                
+
             })
     }
 
@@ -76,32 +76,33 @@ export default class UserCrud extends Component {
         return (
             <div>
                 <div className="row">
-                    
-                        <div className="form-group">
-                            <label>Nome</label>
-                            <input type="text" className="form-control"
-                                name="name"
-                                value={this.state.user.name}
-                                onChange={e => this.updateField(e)}
-                                placeholder="Digite o nome..." required />
-                           
-                        </div>
-                    
 
-                    
-                        <div className="form-group">
-                            <label>E-mail</label>
-                            <input type="text" className="form-control"
-                                name="email"
-                                value={this.state.user.email}
-                                onChange={e => this.updateField(e)}
-                                placeholder="Digite o e-mail..." required />
-                            
-                        </div>
-                    
+                    <div className="form-group">
+                        <label>Nome</label>
+                        <input type="text" className="form-control"
+                            name="name"
+                            value={this.state.user.name}
+                            onChange={e => this.updateField(e)}
+                            placeholder="Digite o nome..." required />
+
+                    </div>
+
+                </div>
+                <div className="row">
+
+                    <div className="form-group">
+                        <label>E-mail</label>
+                        <input type="text" className="form-control"
+                            name="email"
+                            value={this.state.user.email}
+                            onChange={e => this.updateField(e)}
+                            placeholder="Digite o e-mail..." required />
+
+                    </div>
+
                 </div>
 
-                <hr/>
+                <hr />
                 <div className="row">
                     <div className="col-xs-12 d-flex justify-content-end">
                         <button className="btn btn-primary"
@@ -115,7 +116,7 @@ export default class UserCrud extends Component {
                         </button>
                     </div>
                 </div>
-           </div> 
+            </div>
         )
     }
 
@@ -148,9 +149,9 @@ export default class UserCrud extends Component {
             </table>
         )
     }
-    
+
     renderRows() {
-        return this.state.list.map((user,index) => {
+        return this.state.list.map((user, index) => {
             return (
                 <tr key={index}>
                     <td>{user.id}</td>
