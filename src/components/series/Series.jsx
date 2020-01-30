@@ -70,7 +70,7 @@ class Series extends Component {
                      {series.name}</h4>
                   <div className="row">
                     <div className="justify-content" >
-                      <p className="lead">
+                      <p className="lead ml-5">
                        {series.genre}/{statuses[series.status]}</p>
                     </div>
                     <hr/>
@@ -78,7 +78,7 @@ class Series extends Component {
                     <div className="row"> 
                     <div className="d-flex justify-content">
                       <Link  className="btn btn-success" to={'/series/edit/'+ series._id}>Editar</Link>
-                      <button type="button"  className="btn btn-danger ml-3" onClick={()=> this.deleteSeries(series)}>Excluir</button>
+                      <button type="button"  className="btn btn-danger ml-5" onClick={()=> this.deleteSeries(series)}>Excluir</button>
                     </div>
                     </div>
                     <hr/>
