@@ -1,5 +1,6 @@
 
-.list-group-image {
+.list-group-image .item {
+  Display: block;
   height:200px;
   width:200px;
 
