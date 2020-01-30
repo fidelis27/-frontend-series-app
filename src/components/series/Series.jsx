@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import Main from '../template/Main'
 import { Redirect } from 'react-router-dom'
 
-import "./séries.css"
+import "./series.css"
 
 const statuses= {
     'watched': 'Assistido',
