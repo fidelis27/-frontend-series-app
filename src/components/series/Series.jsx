@@ -64,7 +64,7 @@ class Series extends Component {
             {this.state.redirect && <Redirect to={this.state.redirect}/>}
             <div className="item ">
               <div className="thumbnail">
-                <img className="group list-group-image" src="https://placehold.it/400x250/000/fff" alt="" />
+                <img className="group list-group-image" src="" alt="" />
                 <div className="caption">
                   <h4 className="group inner list-group-item-heading justify-content-center  ">
                      {series.name}</h4>
