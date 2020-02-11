@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Main from '../template/Main'
+import Apis from '../../db'
 
 const headerProps = {
     icon: 'users',
@@ -13,19 +14,13 @@ const initialState = {
     user: { name: '', email: '' },
     list: []
 }
-
-const api = axios.create({
-    baseURL:/*  'http://localhost:3333' */  process.env.REACT_APP_API_URL 
-})
-
-
- api.get('genre')
+ 
 export default class UserCrud extends Component {
 
     state = { ...initialState }
     constructor(){
         super()
-        api.get('user').then(resp => {
+        Apis.loadUsers().then(resp => {
             this.setState({ list: resp.data })
         })
     
@@ -84,7 +79,7 @@ export default class UserCrud extends Component {
                                 value={this.state.user.name}
                                 onChange={e => this.updateField(e)}
                                 placeholder="Digite o nome..." required />
-                            <div className="help-block with-errors"></div>
+                            
                         </div>
                     </div>
 

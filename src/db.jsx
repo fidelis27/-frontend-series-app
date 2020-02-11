@@ -5,6 +5,9 @@ import axios from 'axios'
 })
 
 const apis ={
+
+    loadUsers:()=> api.get('user'),
+
     loadGenres:()=> api.get('genre'),
     StoreGenre:(genre)=> api.post('genre',genre),
     deleteGenre: (genreId) => api.delete('genre/'+genreId),
@@ -25,4 +28,3 @@ const apis ={
 export default apis  
 
  
-  /* ola */
