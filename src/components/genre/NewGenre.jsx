@@ -180,4 +180,3 @@ class NewGenre extends Component {
 export default NewGenre
 
 
-//rua professor osvaldo martins cruz 276
