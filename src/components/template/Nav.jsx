@@ -2,6 +2,18 @@ import './Nav.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+function openNav(){
+    var x = document.getElementById("nav");
+
+    if (x.className === "nav") {
+        x.className += " menujs";
+        document.getElementById("threeline-icon").innerHTML = "&Cross;";
+    } else {
+        x.className = "nav";
+        document.getElementById("threeline-icon").innerHTML = "&#9776;";
+    }
+
+}
 
 export default props =>
     <aside className="menu-area">
@@ -27,8 +39,9 @@ export default props =>
                 <li>
                     <Link to="/newGenre" className="smoothscroll">
                         Gêneros
-            </Link>
+                    </Link>
                 </li>
+                <li id="threeline-icon" class="threeline-icon" onclick="openNav()">&#9776;</li>
 
             </ul>
         </nav>
