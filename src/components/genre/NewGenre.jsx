@@ -55,21 +55,22 @@ class NewGenre extends Component {
   load(genre) {
     this.setState({ genre: genre })
   }
-  saveGenre(event) {
-    const genre = this.state.genre
-    if (genre._id) {
-      alert("existe id")
+  saveGenre(genre) {
+       
+
+    if (genre._id) {     
       apis.UpdateGenres(genre)
         .then((res) => {
           apis.loadGenres().then(res => {
             const listGenre = res.data
-            const genre = {}
-            this.setState({ genres: listGenre, genre: genre })
+            
+            this.setState({ genres: listGenre, genre: {} })
           }
           )
 
 
         })
+     
     } else {
 
       const newGenre = {
@@ -79,16 +80,17 @@ class NewGenre extends Component {
 
       apis.StoreGenre(newGenre)
         .then((res) => {
+          this.clear();
           const listGenre = this.getUpdatedList(res.data)
-          this.setState({ genres: listGenre, genre: {} })
+          this.setState({ genres: listGenre, genre: {name:""} })
 
         })
 
     }
   }
   clear() {
-    const genre = { name: "" }
-    this.setState({ genre })
+   
+    this.setState({ genre:{ name: "" } })
     
   }
   renderRows() {
@@ -159,7 +161,7 @@ class NewGenre extends Component {
         <div className="row">
 
           <div className="col-12 d-flex justify-content-end">
-            <button type='button' className="btn btn-primary" key="button" onClick={(e) => this.saveGenre(e)}>Salvar</button><br />
+            <button type='button' className="btn btn-primary" key="button" onClick={(e) => this.saveGenre(this.state.genre)}>Salvar</button><br />
             <button type="button" className="btn btn-secondary ml-2" onClick={() => this.clear()}> Cancelar </button>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Main from '../template/Main'
 
@@ -33,14 +32,7 @@ export default class UserCrud extends Component {
             this.setState({ list: resp.data })
         })
 
-
     }
-
-    /* componentDidMount() {
-        axios(baseUrl).then(resp => {
-            this.setState({ list: resp.data })
-        })
-    } */
 
     clear() {
         this.setState({ user: initialState.user })
@@ -48,12 +40,12 @@ export default class UserCrud extends Component {
 
     save() {
         const user = this.state.user
-        console.log(user)
+        
         const method = user._id ? 'put' : 'post'
         const url = user._id ? `${baseUrl}/${user._id}` : baseUrl
         axios[method](url, user)
             .then(resp => {
-                console.log("teste id", user._id)
+                
                 if (!user._id) {
                     const list = this.getUpdatedList(resp.data)
                     this.setState({ user: initialState.user, list })
@@ -62,6 +54,7 @@ export default class UserCrud extends Component {
                 }
 
             })
+            this.clear();
     }
 
     getUpdatedList(user, add = true) {
@@ -132,7 +125,7 @@ export default class UserCrud extends Component {
         axios.delete(`${baseUrl}/${user._id}`).then(resp => {
             const list = this.getUpdatedList(user, false)
             this.setState({ list })
-            console.log(resp.data)
+           
         })
     }
    
@@ -159,11 +152,11 @@ export default class UserCrud extends Component {
     renderRows() {
         return this.state.list.map((user, index) => {
             return (<>
-                <tr key={index}>
+                <tr key={user._id}>
 
                     
-                    <td><Link to={`user/${user.name}`}>{user.name}</Link></td>                    
-                    
+                    {/* <td><Link to={`user/${user.name}`}>{user.name}</Link></td>                     */}
+                    <td>{user.name}</td>
                     <td className="button">
                         <button className="btn btn-warning"
                             onClick={() => this.load(user)} title="editar">
