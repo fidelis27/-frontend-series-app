@@ -136,7 +136,9 @@ class NewSeries extends Component {
             </button>
 
           <button type="button" className="btn btn-secondary ml-2"
-            onClick={e => this.clear(e)}>
+            onClick={e => this.setState({
+              redirect: `/series/${this.state.serie.genre}`
+            })}>
             Cancelar
             </button>
 
