@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apis from '../../db'
+import apis from '../../services/api'
 
 import Main from '../template/Main'
 

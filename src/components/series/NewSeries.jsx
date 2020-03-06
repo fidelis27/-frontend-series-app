@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apis from '../../db'
+import apis from '../../services/api'
 
 import Main from '../template/Main'
 import { Redirect } from 'react-router-dom'
@@ -103,8 +103,7 @@ class NewSeries extends Component {
                 {Object
                   .keys(statuses)
                   .map(status => <option key={status} value={status}>{statuses[status]}</option>)}
-              </select>
-              <div className="help-block with-errors"></div>
+              </select>              
             </div>
           </div>
 
@@ -114,8 +113,7 @@ class NewSeries extends Component {
               <select type="text" ref="genre" className="form-control">
                 {this.state.genres
                   .map(genre => <option key={genre.name} value={genre.name}>{genre.name}</option>)}
-              </select>
-              <div className="help-block with-errors"></div>
+              </select>             
             </div>
           </div>
         </div>
@@ -156,5 +154,3 @@ class NewSeries extends Component {
 }
 export default NewSeries
 
-
-//rua professor osvaldo martins cruz 276

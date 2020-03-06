@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apis from '../../db'
+import apis from '../../services/api'
 import { Link } from 'react-router-dom'
 import Main from '../template/Main'
 import { Redirect } from 'react-router-dom'
@@ -159,7 +159,7 @@ class NewGenre extends Component {
         <div className="row">
 
           <div className="col-12 d-flex justify-content-end">
-            <button type='button' className="btn btn-success" key="button" onClick={(e) => this.saveGenre(e)}>Salvar</button><br />
+            <button type='button' className="btn btn-primary" key="button" onClick={(e) => this.saveGenre(e)}>Salvar</button><br />
             <button type="button" className="btn btn-secondary ml-2" onClick={() => this.clear()}> Cancelar </button>
           </div>
         </div>
@@ -178,5 +178,6 @@ class NewGenre extends Component {
   }
 }
 export default NewGenre
+
 
 

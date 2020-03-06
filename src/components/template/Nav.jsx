@@ -5,23 +5,33 @@ import { Link } from 'react-router-dom'
 
 export default props =>
     <aside className="menu-area">
-        <nav className="menu">
-            {/* Refatorar em casa! */}
-            <Link to="/">
-                <i className="fa fa-home"></i> Início
+        <nav id="nav-wrap" className="menu">
+            <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+            <a type="button" className="mobile-btn" title="Hide navigation">Hide navigation</a>
+            <ul id="nav" className="nav">
+                <li className="current">
+                    <Link to="/">
+                        <i className="fa fa-home smoothscroll"></i> Início
+                </Link>
+                </li>
+                <li>
+                    <Link to="/users">
+                        <i className="fa fa-users"></i> Usuários
+                </Link>
+                </li>
+                <li>
+                    <Link to="/new" className="smoothscroll">
+                        Séries
+                </Link>
+                </li>
+                <li>
+                    <Link to="/newGenre" className="smoothscroll">
+                        Gêneros
             </Link>
-            <Link to="/users">
-                <i className="fa fa-users"></i> Usuários
-            </Link>
-            <Link to="/new">
-                Séries
-            </Link>
-            <Link to="/newGenre">
-                Gêneros
-            </Link>
-           {/*  <Dropdown/>
- */}
+                </li>
 
+            </ul>
         </nav>
+        
 
     </aside>

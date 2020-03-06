@@ -1,13 +1,10 @@
 import axios from 'axios'
 
  const api = axios.create({
-    baseURL:/*  'http://localhost:3333' */  process.env.REACT_APP_API_URL 
+    baseURL: 'http://localhost:3333'  /* process.env.REACT_APP_API_URL */ 
 })
 
 const apis ={
-
-    loadUsers:()=> api.get('user'),
-
     loadGenres:()=> api.get('genre'),
     StoreGenre:(genre)=> api.post('genre',genre),
     deleteGenre: (genreId) => api.delete('genre/'+genreId),
@@ -15,7 +12,9 @@ const apis ={
     
     
     StoreSeries:(serie)=> api.post('serie',serie),
-    UpdateSeries:(serie)=>api.put('serie/'+serie._id,serie),
+    UpdateSeries:(id,serie) => 
+        api.put('serie/'+id,serie)       
+    ,
     loadSeriesByGenre:(genre)=> api.get('serie/'+genre),
     loadSeries:()=> api.get('serie'),   
     deleteSeries: (serieId) => api.delete('serie/'+serieId),
@@ -28,3 +27,4 @@ const apis ={
 export default apis  
 
  
+  /* ola */

@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Main from '../template/Main'
-import Apis from '../../db'
+
+import "./styles.css"
+
 
 const headerProps = {
     icon: 'users',
@@ -15,17 +18,29 @@ const initialState = {
     list: []
 }
 
+const api = axios.create({
+    baseURL: 'http://localhost:3333'  /* process.env.REACT_APP_API_URL */
+})
+
+
+api.get('genre')
 export default class UserCrud extends Component {
 
     state = { ...initialState }
     constructor() {
         super()
-        Apis.loadUsers().then(resp => {
+        api.get('user').then(resp => {
             this.setState({ list: resp.data })
         })
 
 
     }
+
+    /* componentDidMount() {
+        axios(baseUrl).then(resp => {
+            this.setState({ list: resp.data })
+        })
+    } */
 
     clear() {
         this.setState({ user: initialState.user })
@@ -36,7 +51,6 @@ export default class UserCrud extends Component {
         console.log(user)
         const method = user._id ? 'put' : 'post'
         const url = user._id ? `${baseUrl}/${user._id}` : baseUrl
-        console.log(method)
         axios[method](url, user)
             .then(resp => {
                 console.log("teste id", user._id)
@@ -64,35 +78,37 @@ export default class UserCrud extends Component {
 
     renderForm() {
         return (
-            <div>
-                <div className="row">
-                    <div className="col-lg-12 col-md-6">
+            <div className="form">
+                <div className="row pl-3">
+                    <div className="col-12 col-md-12">
                         <div className="form-group">
                             <label>Nome</label>
                             <input type="text" className="form-control"
                                 name="name"
                                 value={this.state.user.name}
                                 onChange={e => this.updateField(e)}
-                                placeholder="Digite o nome..." required />                            
+                                placeholder="Digite o nome..." required />
                         </div>
                     </div>
+
                 </div>
-                <div className="row">
-                    <div className="col-lg-12 col-md-6">
+                <div className="row pl-3">
+                    <div className="col-12 col-md-12">
                         <div className="form-group">
-                        <label>E-mail</label>
-                        <input type="text" className="form-control"
-                            name="email"
-                            value={this.state.user.email}
-                            onChange={e => this.updateField(e)}
-                            placeholder="Digite o e-mail..." required />
+                            <label>E-mail</label>
+                            <input type="text" className="form-control"
+                                name="email"
+                                value={this.state.user.email}
+                                onChange={e => this.updateField(e)}
+                                placeholder="Digite o e-mail..." required />
                         </div>
                     </div>
-                </div>                
+
+                </div>
 
                 <hr />
-                <div className="row">
-                    <div className="col-xs-12 d-flex justify-content-end">
+                <div className="row pl-3">
+                    <div className=" d-flex justify-content-end">
                         <button className="btn btn-primary"
                             onClick={e => this.save(e)}>
                             Salvar
@@ -119,43 +135,52 @@ export default class UserCrud extends Component {
             console.log(resp.data)
         })
     }
+   
 
     renderTable() {
         return (
             <table className="table mt-4">
                 <thead>
                     <tr>
-                        
-                        <th>Nome</th>
-                        <th>E-mail</th>
+
+                        <th>Nome</th>                        
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     {this.renderRows()}
+                    
                 </tbody>
+                
             </table>
         )
     }
 
     renderRows() {
         return this.state.list.map((user, index) => {
-            return (
+            return (<>
                 <tr key={index}>
+
                     
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>
+                    <td><Link to={`user/${user.name}`}>{user.name}</Link></td>                    
+                    
+                    <td className="button">
                         <button className="btn btn-warning"
-                            onClick={() => this.load(user)}>
+                            onClick={() => this.load(user)} title="editar">
                             <i className="fa fa-pencil"></i>
                         </button>
+                        
                         <button className="btn btn-danger ml-2"
-                            onClick={() => this.remove(user)}>
+                            onClick={() => this.remove(user)}title="excluir">
                             <i className="fa fa-trash"></i>
                         </button>
+                        <div id="user" className="user">email : {user.email} </div>
                     </td>
+                    
+
                 </tr>
+                
+                </>
             )
         })
     }

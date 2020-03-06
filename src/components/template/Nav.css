@@ -16,6 +16,27 @@ aside.menu-area {
 .menu a:hover {
     background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
 }
+li.scrolldown {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -29px;
+    color: #fff;
+    display: block;
+    height: 42px;
+    width: 42px;
+    font-size: 42px;
+    line-height: 42px;
+    color: #fff;
+    border-radius: 100%;
+    background-color: #161415;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+ }
+ #nav-wrap > a.mobile-btn { display: none; }
+
 
 @media(max-width: 768px) {
     .menu {

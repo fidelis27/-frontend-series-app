@@ -10,12 +10,15 @@ import Series from '../components/series/Series'
 import EditSeries from '../components/series/EditSeries'
 
 
+
 export default props => 
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/users' component={UserCrud} />
         <Route exact path='/series/:genre' component={Series} />
         <Route exact path='/series/edit/:id' component={EditSeries} />
+        
+       
         
         <Route exact path='/new' component={NewSeries} />
 
